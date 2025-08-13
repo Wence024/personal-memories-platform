@@ -80,7 +80,13 @@ Automated fetching of memories when the media storage exceeds local device capac
 * Storage capped initially at 1 GB (Appwrite free tier).
 * Long-term goal: support \~50 GB per user, scalability deferred.
 
+## Project Structure & Components
+
 For detailed component descriptions and responsibilities, see [docs/components.md](./docs/components.md).
+
+## Roadmap
+
+For a detailed breakdown of the project timeline, features, and responsibilities, please refer to [docs/roadmap.md](./docs/roadmap.md).
 
 ## Future Enhancements
 
