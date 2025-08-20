@@ -46,7 +46,7 @@ app.post('/students', (req, res) => {
     let sql = 'INSERT INTO students SET ?';
     db.query(sql, newStudent, (err, result) => {
         if (err) throw err;
-        res.send('Student added...');
+        res.send(result);
     });
 });
 
@@ -55,7 +55,7 @@ app.put('/students/:id', (req, res) => {
     let sql = `UPDATE students SET name = '${req.body.name}', course = '${req.body.course}', year = ${req.body.year} WHERE id = ${req.params.id}`;
     db.query(sql, (err, result) => {
         if (err) throw err;
-        res.send('Student updated...');
+        res.send(result);
     });
 });
 
