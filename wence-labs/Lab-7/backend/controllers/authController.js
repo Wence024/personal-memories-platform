@@ -4,6 +4,13 @@ const { users } = require('../models/userModel');
 
 const SECRET_KEY = 'supersecretkey';
 
+/**
+ * Registers a new user with the provided username, password, and role.
+ * 
+ * @param {Object} req - Express request object containing user data in body
+ * @param {Object} res - Express response object
+ * @returns {void} Sends JSON response with status 201 on success or 400/401 on error
+ */
 const register = async (req, res) => {
     const { username, password, role } = req.body;
 
@@ -20,6 +27,13 @@ const register = async (req, res) => {
     res.status(201).json({ message: 'User registered successfully' });
 };
 
+/**
+ * Authenticates a user with the provided credentials.
+ * 
+ * @param {Object} req - Express request object containing username and password in body
+ * @param {Object} res - Express response object
+ * @returns {void} Sends JSON response with authentication token or error message
+ */
 const login = async (req, res) => {
     const { username, password } = req.body;
 
