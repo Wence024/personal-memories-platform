@@ -1,50 +1,48 @@
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = 'supersecretkey';
+const SECRET_KEY = process.env.SECRET_KEY || 'supersecretkey';
 
 /**
- * Authenticates the user by verifying the JWT token.
+ * Express middleware to verify JWT sent in Authorization header.
+ * Sets req.user if token is valid.
  * 
- * @param req - Express request object with authorization header
- * @param res - Express response object
- * @param next - Next middleware function
- * @returns Calls next() on success or sends error response
+ * @param {import('express').Request} req - Request object.
+ * @param {import('express').Response} res - Response object.
+ * @param {import('express').NextFunction} next - Next middleware callback.
+ * @returns {void} Calls next() on success or sends status 401/403 on failure.
  */
 function authenticateToken(req, res, next) {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-    if (!token) return res.status(401).json({ message: 'No token provided' });
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  if (!token) {
+    return res.status(401).json({ message: 'No token provided' });
+  }
 
-    jwt.verify(token, SECRET_KEY, (err, user) => {
-        if (err) return res.status(403).json({ message: 'Invalid token' });
-        req.user = user;
-        next();
-    });
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) {
+      return res.status(403).json({ message: 'Invalid token' });
+    }
+    req.user = user;
+    next();
+  });
 }
 
 /**
- * Middleware factory to check user roles against allowed roles.
+ * Factory that returns middleware verifying user role.
+ * Allows route if req.user.role is one of allowedRoles.
  * 
- * @param allowedRoles - Roles permitted to access the route
- * @returns Middleware function that checks role permissions
+ * @param {...string} allowedRoles - List of strings representing allowed roles.
+ * @returns {import('express').RequestHandler} Middleware function verifying role.
  */
 function authorizeRoles(...allowedRoles) {
-    /**
-     * Middleware to check user role against allowed roles.
-     * 
-     * @param req - Express request object with user data
-     * @param res - Express response object
-     * @param next - Next middleware function
-     * @returns Calls next() or sends error response
-     */
-    return (req, res, next) => {
-        if (!allowedRoles.includes(req.user.role)) {
-            return res.status(403).json({ message: 'Access denied: insufficient permissions' });
-        }
-        next();
-    };
+  return (req, res, next) => {
+    if (!req.user || !allowedRoles.includes(req.user.role)) {
+      return res.status(403).json({ message: 'Access denied: insufficient permissions' });
+    }
+    next();
+  };
 }
 
 module.exports = {
-    authenticateToken,
-    authorizeRoles,
+  authenticateToken,
+  authorizeRoles
 };
