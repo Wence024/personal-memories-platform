@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { passport, generateGoogleJWT } = require('../config/googleOAuth');
+const { passport } = require('../config/googleOAuth');
+const { handleGoogleCallback } = require('../controllers/googleController');
 
 /**
  * Initiates Google OAuth login flow.
@@ -15,7 +16,8 @@ router.get('/auth/google',
 
 /**
  * Callback route for Google OAuth.
- * On success, returns JWT token; on failure, redirects to /login.
+ * On success, delegates to controller to generate JWT token.
+ * On failure, redirects to /login.
  * 
  * @name GET /auth/google/callback
  * @param {import('express').Request} req - Request from Google after login.
@@ -24,10 +26,7 @@ router.get('/auth/google',
  */
 router.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
-  (req, res) => {
-    const token = generateGoogleJWT(req.user);
-    res.json({ token });
-  }
+  handleGoogleCallback
 );
 
 module.exports = router;
