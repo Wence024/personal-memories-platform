@@ -1,6 +1,6 @@
 // Check if string contains only alphabetic characters (A-Z, a-z)
 function isAlphabetic(str) {
-  return /^[A-Za-z]+$/.test(str);
+  return /^[A-Za-z\s]+$/.test(str);  // Allow spaces in names
 }
 
 // Simple email validation regex
