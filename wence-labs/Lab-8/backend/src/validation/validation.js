@@ -1,14 +1,41 @@
-// Check if string contains only alphabetic characters (A-Z, a-z)
+/**
+ * Checks if a string contains only alphabetic characters (A-Z, a-z).
+ * Allows spaces in names.
+ * 
+ * @param {string} str - The string to be validated.
+ * 
+ * @returns {boolean} Returns true if the string is alphabetic, false otherwise.
+ */
 function isAlphabetic(str) {
   return /^[A-Za-z\s]+$/.test(str);  // Allow spaces in names
 }
 
-// Simple email validation regex
+/**
+ * Validates the provided email format.
+ * 
+ * @param {string} email - The email string to be validated.
+ * 
+ * @returns {boolean} Returns true if the email is valid, false otherwise.
+ */
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// Validate the entire user data and return array of error messages (empty if valid)
+/**
+ * Validates the entire user data, returning an array of error messages.
+ * 
+ * @param {Object} data - The user data to be validated.
+ * @param {string} data.name - The user's name.
+ * @param {string} data.email - The user's email.
+ * @param {string} data.password - The user's password.
+ * @param {number} data.age - The user's age.
+ * 
+ * @returns {Array<string>} An array of error messages (empty if valid). 
+ * - "Name must be alphabetic."
+ * - "Email must be valid."
+ * - "Password must be at least 8 characters."
+ * - "Age must be a number between 18 and 65."
+ */
 function validateUser(data) {
   const errors = [];
 
