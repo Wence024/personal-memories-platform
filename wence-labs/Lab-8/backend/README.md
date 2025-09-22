@@ -8,13 +8,13 @@
 
 ## 2. **Create Server File**
 
-* [ ] Create `server.js` (or any name).
-* [ ] Import Express and required modules (`fs` for logging).
+* [x] Create `server.js` (or any name).
+* [x] Import Express and required modules (`fs` for logging).
 
 ## 3. **Set Up Express App**
 
-* [ ] Initialize Express app.
-* [ ] Add middleware to parse JSON request bodies (`express.json()`).
+* [x] Initialize Express app.
+* [x] Add middleware to parse JSON request bodies (`express.json()`).
 
 ## 4. **Implement Input Validation Functions**
 
