@@ -41,18 +41,18 @@
 
 ## 8. **Run and Test Server**
 
-* [ ] Start server (`node server.js`).
-* [ ] Use tools like Postman or curl to send test requests.
-* [ ] Verify proper validation and error responses.
-* [ ] Check that valid users are accepted.
+* [x] Start server (`node server.js`).
+* [x] Use tools like Postman or curl to send test requests.
+* [x] Verify proper validation and error responses.
+* [x] Check that valid users are accepted.
 
 ## 9. **Verify Error Logging**
 
-* [ ] Intentionally cause an error (e.g., server crash).
-* [ ] Check `error.log` for recorded error information.
+* [x] Intentionally cause an error (e.g., server crash).
+* [x] Check `error.log` for recorded error information.
 
 ## 10. **(Optional) Extend**
 
-* [ ] Build frontend form to interact with backend.
-* [ ] Persist data to a real database.
-* [ ] Add more advanced validations or security measures.
+* ~~Build frontend form to interact with backend.~~
+* ~~Persist data to a real database.~~
+* ~~Add more advanced validations or security measures.~~
