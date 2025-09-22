@@ -18,10 +18,10 @@
 
 ## 4. **Implement Input Validation Functions**
 
-* [ ] Write a function to check if the name is alphabetic.
-* [ ] Write a function to validate email format.
-* [ ] Write logic to check password length.
-* [ ] Validate age to be between 18 and 65.
+* [x] Write a function to check if the name is alphabetic.
+* [x] Write a function to validate email format.
+* [x] Write logic to check password length.
+* [x] Validate age to be between 18 and 65.
 
 ## 5. **Create Registration Endpoint (`POST /register`)**
 
