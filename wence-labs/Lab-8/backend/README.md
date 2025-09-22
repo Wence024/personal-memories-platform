@@ -25,9 +25,9 @@
 
 ## 5. **Create Registration Endpoint (`POST /register`)**
 
-* [ ] Extract user data from request body.
-* [ ] Use validation functions to check inputs.
-* [ ] Return detailed error messages for invalid inputs with status 400.
+* [x] Extract user data from request body.
+* [x] Use validation functions to check inputs.
+* [x] Return detailed error messages for invalid inputs with status 400.
 
 ## 6. **Implement Error Handling**
 
