@@ -31,9 +31,9 @@
 
 ## 6. **Implement Error Handling**
 
-* [ ] Wrap endpoint logic in `try-catch`.
-* [ ] On unexpected errors, log error details to a file (`error.log`).
-* [ ] Return user-friendly error response (status 500).
+* [x] Wrap endpoint logic in `try-catch`.
+* [x] On unexpected errors, log error details to a file (`error.log`).
+* [x] Return user-friendly error response (status 500).
 
 ## 7. **Store Valid User Data**
 
