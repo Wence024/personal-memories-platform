@@ -1,11 +1,3 @@
-const express = require('express');
-const fs = require('fs');
-
-const app = express();
-app.use(express.json());
-
-// --- Step 4: Validation functions ---
-
 // Check if string contains only alphabetic characters (A-Z, a-z)
 function isAlphabetic(str) {
   return /^[A-Za-z]+$/.test(str);
@@ -44,7 +36,4 @@ function validateUser(data) {
   return errors;
 }
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+module.exports = { validateUser };
