@@ -37,7 +37,7 @@
 
 ## 7. **Store Valid User Data**
 
-* [ ] Save validated user data in an in-memory array or database.
+* [x] Save validated user data in an in-memory array or database.
 
 ## 8. **Run and Test Server**
 
