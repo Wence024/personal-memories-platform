@@ -1,8 +1,6 @@
 const { validateUser } = require('../validation/validation');
 const { logErrorToFile } = require('../services/errorLoggingService');
-
-// In-memory storage for user data
-let users = [];  // This is a simple array, in production, you would use a database.
+const { addUser } = require('../services/userService');  // Import addUser from userService
 
 async function registerUser(req, res) {
   try {
@@ -14,8 +12,8 @@ async function registerUser(req, res) {
       return res.status(400).json({ errors });
     }
 
-    // Store validated user data in memory (in a real app, this would be in a database)
-    users.push(userData);
+    // Store the valid user data
+    addUser(userData);
 
     res.status(201).json({
       message: 'User registered successfully!',
