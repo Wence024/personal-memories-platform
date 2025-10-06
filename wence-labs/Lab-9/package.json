@@ -1,0 +1,16 @@
+{
+  "name": "lab-9",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "powershell cd .. && cd .. && cd .. && powershell -ExecutionPolicy Bypass -File .\\scripts\\prep-commit-msg.ps1 && exit && exit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
