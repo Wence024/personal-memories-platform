@@ -1,0 +1,20 @@
+@startuml Architecture Diagram
+!theme plain
+
+actor "Client" as client
+participant "Order Service" as orderService
+participant "User Service" as userService
+
+client -> orderService: GET /orders/{id}
+activate orderService
+
+orderService -> userService: GET /users
+activate userService
+
+userService --> orderService: [User List]
+deactivate userService
+
+orderService --> client: {order, user}
+deactivate orderService
+
+@enduml
