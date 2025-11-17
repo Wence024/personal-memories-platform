@@ -3,7 +3,8 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
+  sendPasswordResetEmail
 } from 'firebase/auth';
 import { auth } from '../model/firebaseConfig';
 
@@ -49,5 +50,16 @@ export const loginWithGoogle = async () => {
     await signInWithPopup(auth, provider);
   } catch (error: any) {
     throw new Error(error.message || 'Failed to login with Google');
+  }
+};
+
+/**
+ * Send password reset email
+ */
+export const resetPassword = async (email: string) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+  } catch (error: any) {
+    throw new Error(error.message || 'Failed to send password reset email');
   }
 };

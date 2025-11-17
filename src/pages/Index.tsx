@@ -1,10 +1,36 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Upload, RefreshCw, Image, Lock, Calendar, Sparkles } from "lucide-react";
+import { Upload, RefreshCw, Image, Lock, Calendar, Sparkles, LogOut } from "lucide-react";
+import { useAuthContext } from "@/feature/authentication/model/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Index = () => {
+  const { user, logout } = useAuthContext();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      toast.success('Logged out successfully');
+      navigate('/login');
+    } catch (error: any) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-secondary/20">
+      {/* Header with Auth */}
+      {user && (
+        <div className="container mx-auto px-4 py-4 flex justify-end">
+          <Button variant="outline" onClick={handleLogout} className="gap-2">
+            <LogOut className="w-4 h-4" />
+            Logout
+          </Button>
+        </div>
+      )}
+      
       {/* Hero Section */}
       <header className="container mx-auto px-4 py-16 md:py-24">
         <div className="text-center max-w-4xl mx-auto">
@@ -26,12 +52,29 @@ const Index = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-7 duration-700 delay-300">
-            <Button size="lg" className="text-base shadow-soft hover:shadow-lg transition-all">
-              Get Started
-            </Button>
-            <Button size="lg" variant="outline" className="text-base">
-              View Demo
-            </Button>
+            {user ? (
+              <Button size="lg" className="text-base shadow-soft hover:shadow-lg transition-all">
+                Upload Memories
+              </Button>
+            ) : (
+              <>
+                <Button 
+                  size="lg" 
+                  className="text-base shadow-soft hover:shadow-lg transition-all"
+                  onClick={() => navigate('/register')}
+                >
+                  Get Started
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="text-base"
+                  onClick={() => navigate('/login')}
+                >
+                  Sign In
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </header>
