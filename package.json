@@ -8,6 +8,7 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
+    "migrate-repository": "powershell -ExecutionPolicy Bypass -File ./scripts/migrate-overwrite-to-new-git-repo.ps1",
     "preview": "vite preview"
   },
   "dependencies": {
