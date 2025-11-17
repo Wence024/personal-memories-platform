@@ -2,7 +2,7 @@
 
 ## Project Idea
 
-A cloud storage platform for one's pictures and videos that have outgrown local storage capacity. The platform enables automatic, periodic “refetching” of random media files for a set size (e.g., 1 GB) to help users relive memories without needing to back up everything.
+A cloud storage platform for one's pictures and videos that have outgrown local storage capacity. The platform enables automatic, periodic "refetching" of random media files for a set size (e.g., 1 GB) to help users relive memories without needing to back up everything.
 
 ## Objectives
 
@@ -39,7 +39,7 @@ Automated fetching of memories when the media storage exceeds local device capac
 * User-configurable total allocated storage size limit on local device (default/fallback 1 GB).
 * Manual refetch trigger available to users at any time.
 * Refetch output is stored in a dedicated local cache folder, cleared before each new refetch.
-* Cached media is separated from the user’s main media directories, avoiding overwriting or conflicts.
+* Cached media is separated from the user's main media directories, avoiding overwriting or conflicts.
 * Offline or limited connectivity during scheduled refetch silently delays the process and notifies the user upon app launch.
 
 ### User Interface / UX
@@ -78,15 +78,22 @@ Automated fetching of memories when the media storage exceeds local device capac
 
 * Prototype targets small user base (e.g., a family).
 * Storage capped initially at 1 GB (Appwrite free tier).
-* Long-term goal: support \~50 GB per user, scalability deferred.
+* Long-term goal: support ~50 GB per user; scalability deferred.
 
 ## Project Structure & Components
 
-For detailed component descriptions and responsibilities, see [docs/components.md](./docs/components.md).
+For detailed component descriptions and responsibilities, see  
+📄 **[docs/components.md](./docs/components.md)**.
+
+## Development Guidelines
+
+* [Coding Guidelines](./docs/coding-guidelines.md)  
+* [Git Commit Guidelines](./docs/git-commit-guidelines.md)  
+* [Testing Guide](./docs/testing-guide.md)
 
 ## Roadmap
 
-For a detailed breakdown of the project timeline, features, and responsibilities, please refer to [docs/roadmap.md](./docs/roadmap.md).
+See 📄 **[docs/roadmap.md](./docs/roadmap.md)**.
 
 ## Future Enhancements
 
@@ -95,3 +102,23 @@ For a detailed breakdown of the project timeline, features, and responsibilities
 * Enhanced security and privacy compliance.
 * Push notifications and richer feedback mechanisms.
 * Analytics and monitoring.
+
+## Tech Stack
+
+* **Frontend**: React + TypeScript + Vite
+* **Styling**: Tailwind CSS + shadcn-ui
+* **State Management**: React Query
+* **Backend**: Lovable Cloud (Supabase)
+* **Storage**: Appwrite (initial), extensible to other providers
+
+## Getting Started
+
+1. Clone the repository  
+2. Install dependencies: `npm install`  
+3. Run development server: `npm run dev`  
+4. Open browser at: **http://localhost:8080**
+
+## Lovable Project
+
+Built with **Lovable** —  
+**URL:** https://lovable.dev/projects/714eda88-1501-4ec6-968a-a49d72ff7530
