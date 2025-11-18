@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./feature/authentication/model/AuthContext";
 import { LoginScreen } from "./feature/authentication/view/LoginScreen";
 import { RegisterScreen } from "./feature/authentication/view/RegisterScreen";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -19,7 +20,11 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={
+              <ProtectedRoute>
+                <Index />
+              </ProtectedRoute>
+            } />
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/register" element={<RegisterScreen />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
